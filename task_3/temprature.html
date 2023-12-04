@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="temprature.css">
+    <title>temprature converter</title>
+</head>
+<body>
+    
+<div class="outer_div">
+<div class="container">
+    <div class="items">
+<h2> Temprature converter</h2>
+
+<br><br>
+<div style="display: flex; margin-left: 5px;">
+<input type="text" placeholder="Enter degree" id="degree" >
+<img src="thermometer.png" style="width: 25px; height: 25px;">
+<p id="notValid" style="margin-left: 6px"></p>
+</div>
+<br><br>
+
+<div class="rad_div">
+<input type="radio" name="temp" id="Celsius" class="rad">
+<label for="temp" style="font-weight: bolder; font-size: larger">Celsius</label>
+
+<input type="radio" name="temp" id="Fahrenheit" class="rad">
+<label for="temp" style="font-weight: bolder; font-size: larger">Fahrenheit</label>
+
+<input type="radio" name="temp" id="Kelvin" class="rad">
+<label for="temp" style="font-weight: bolder; font-size: larger;">Kelvin</label>
+</div>
+<br><br><br><br>
+<pre id="result" > </pre>
+<br><br>
+<button onclick="done()">submit</button>
+</div>
+
+</div>
+</div>
+
+
+<script>
+    var degree=document.getElementById("degree");
+    var Celsius=document.getElementById("Celsius");
+    var Fahrenheit=document.getElementById("Fahrenheit");
+    var Kelvin=document.getElementById("Kelvin");
+    var result=document.getElementById("result");
+    var errorMessage=document.getElementById("notValid");
+
+    var res=0;
+    
+    function done(){
+        if(!isNaN(degree.value)){
+        if(Celsius.checked){
+
+        result.innerHTML= "  fahrenheit = " + ((degree.value)*9/5)+32 + "      " +"kelvin = " + ((degree.value)+273.15) ;
+    }
+
+    if(Fahrenheit.checked){
+
+    result.innerHTML= "  celsius = " + ((degree.value)-32)*5/9 + "      " +"kelvin = " + ((degree.value)*5/9+459.67) ;
+}
+
+    if(Kelvin.checked){
+
+    result.innerHTML= " celsius = " + ((degree.value)-273.15) + "      " +"fahrenheit = " + ((degree.value)-273.15)*9/5+32 ;
+}
+
+    }
+    else{
+        
+        errorMessage.innerHTML="please insert a number.";
+        errorMessage.style.color="red";
+
+    }
+
+    degree.addEventListener("click", function(){
+        errorMessage.style.display="none";
+    })
+}
+
+    </script>
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>
